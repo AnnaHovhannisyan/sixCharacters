@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sixCharacters</title>
+    <style>
+        #inp1{
+            background-color: lightgoldenrodyellow;
+
+        }
+
+        #sub{
+
+            background-color: aqua;
+
+        }
+
+    </style>
+</head>
+<body>
+
+<p>Enter no more than 6 characters.It will print all possible unique combinations of characters</p>
+
+<form  id="fr">
+    <input type="text" name="inp" id="inp1">
+    <button type="button" onclick="clickBut()"id="sub">Submit</button>
+</form>
+<p id="demo"></p>
+<p id="demo1"></p>
+
+
+<script>
+    let bool=false;
+    let num;
+    let arr=[];
+    let arr1=[];
+    let rand;
+    let word;
+    let text='';
+
+
+    let inp= document.getElementById('inp1');
+    let firstSet=new Set();
+    let mySet=new Set();
+
+    inp.addEventListener('keyup',function(){
+
+
+        text = inp.value;
+
+
+        for (let k of text) {
+            firstSet.add(k);
+
+
+            if(firstSet.size>6){
+
+                document.getElementById('demo').innerHTML = "Six digits are already inserted. Press submit button";
+                break;
+            }
+
+
+        }
+        if(bool===true){
+            bool=false;
+            text='';
+
+            document.getElementById('demo').innerHTML = "";
+            document.getElementById('demo1').innerHTML = "";
+            for(let it of mySet){
+                mySet.delete(it);
+            }
+            for(let elem of firstSet){
+
+                firstSet.delete(elem)
+            }
+            console.log(mySet);
+            console.log(firstSet)
+
+        }
+    });
+
+
+    function clickBut(){
+
+        arr=[...firstSet];
+        test='';
+
+        console.log(text);
+
+
+        function Factorial(n) {
+            if (n === 0) {
+
+                return 1;
+            }
+            else {
+                return n * Factorial( n - 1 );
+            }
+        }
+        num=Factorial(arr.length);
+
+
+        do{
+            do{
+                rand= Math.floor(Math.random() * arr.length );
+
+                if(arr1.indexOf(arr[rand])===-1){
+                    arr1.push(arr[rand])
+                }
+
+            }
+            while(arr1.length<arr.length);
+
+            if(arr1.length===arr.length){
+
+                word= arr1.join("");
+                mySet.add(word);
+
+                if(mySet.size===num){
+                    for(let item of mySet){
+                        document.getElementById('demo').innerHTML = '';
+                        document.getElementById('demo1').innerHTML+=item+"  <br> ";
+
+                    }
+
+                }
+
+                arr1.splice(0,arr1.length);
+            }
+
+        }while(mySet.size<num);
+
+        bool=true;
+    }
+
+</script>
+
+
+</body>
+</html>
