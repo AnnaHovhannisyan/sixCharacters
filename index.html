@@ -22,8 +22,9 @@
 <p>Enter no more than 6 characters.It will print all possible unique combinations of characters</p>
 
 <form  id="fr">
+    <label for="inp1"></label>
     <input type="text" name="inp" id="inp1">
-    <button type="button" onclick="clickBut()"id="sub">Submit</button>
+    <button type="button" onclick="clickBut()" id="sub">Submit</button>
 </form>
 <p id="demo"></p>
 <p id="demo1"></p>
@@ -45,20 +46,16 @@
 
     inp.addEventListener('keyup',function(){
 
-
         text = inp.value;
-
 
         for (let k of text) {
             firstSet.add(k);
-
 
             if(firstSet.size>6){
 
                 document.getElementById('demo').innerHTML = "Six digits are already inserted. Press submit button";
                 break;
             }
-
 
         }
         if(bool===true){
