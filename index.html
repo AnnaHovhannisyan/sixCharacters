@@ -86,16 +86,16 @@
         console.log(text);
 
 
-        function Factorial(n) {
+        function factorial(n) {
             if (n === 0) {
 
                 return 1;
             }
             else {
-                return n * Factorial( n - 1 );
+                return n * factorial( n - 1 );
             }
         }
-        num=Factorial(arr.length);
+        num = factorial(arr.length);
 
 
         do{
